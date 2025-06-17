@@ -1,0 +1,252 @@
+Question 2: Open school database, then select student table and use following SQL statements.
+TYPE THE STATEMENT, PRESS ENTER AND NOTE THE OUTPUT 
+
+ 1). To display all the records form STUDENT table. SELECT * FROM student ; 
+ANS:- 
+       
+mysql>  show databases;
++--------------------+
+| Database           |
++--------------------+
+| contactdate        |
+| da                 |
+| information_schema |
+| mydb               |
+| mysql              |
+| ndb                |
+| performance_schema |
+| sakila             |
+| school             |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.36 sec)
+
+mysql> use school;
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| student          |
++------------------+
+1 row in set (0.29 sec)
+
+mysql> describe student;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| stdID      | int          | NO   | PRI | NULL    |       |
+| Stdname    | varchar(100) | NO   |     | NULL    |       |
+| sex        | char(10)     | NO   |     | NULL    |       |
+| percentage | decimal(5,2) | NO   |     | NULL    |       |
+| class      | int          | YES  |     | NULL    |       |
+| sec        | char(1)      | NO   |     | NULL    |       |
+| stream     | varchar(50)  | NO   |     | NULL    |       |
+| DOB        | date         | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+8 rows in set (0.45 sec)
+
+
+ INSERT INTO student (stdID, Stdname, sex, percentage, class, sec, stream, DOB)VALUES
+    -> 
+       (1001, 'Surekha Joshi', 'Female', 82, 12, 'A', 'Sience', '3/8/1998'),
+(1002, 'MAAHI AGARWAL', 'Female', 56, 11, 'C', 'Commerce', '11/23/2008'),
+(1003, 'Sanam Verma', 'male', 59, 11, 'C', 'Commerce', '6/29/2006'),
+(1004, 'Ronit Kumar', 'male', 63, 11, 'C', 'Commerce', '11/5/1997'),
+(1005, 'Dipesh Pulkit', 'male', 78, 11, 'B', 'Science', '14/09/2003'),
+(1006, 'JAHANVI Puri', 'Female', 60, 11, 'B', 'Commerce', '11/7/2008'),
+(1007, 'Sanam Kumar', 'male', 23, 12, 'F', 'Commerce', '3/8/1998'),
+(1008, 'SAHIL SARAS', 'male', 56, 11, 'C', 'Commerce', '11/7/2008'),
+(1009, 'AKSHRA AGARWAL', 'Female', 72, 12, 'B', 'Commerce', '10/1/1996'),
+(1010, 'STUTI MISHRA', 'Female', 39, 11, 'F', 'Science', '11/23/2008'),
+(1011, 'HARSH AGARWAL', 'male', 42, 11, 'C', 'Science', '3/8/1998'),
+(1012, 'NIKUNJ AGARWAL', 'male', 49, 12, 'C', 'Commerce', '28/06/1998'),
+(1013, 'AKRITI SAXENA', 'Female', 89, 12, 'A', 'Science', '11/23/2008'),
+(1014, 'TANI RASTOGI', 'Female', 82, 12, 'A', 'Science', '11/23/2008');
+
+Query OK, 14 rows affected (0.11 sec)
+Records: 14  Duplicates: 0  Warnings: 0
+
+mysql> select * from student;
++-------+----------------+--------+------------+-------+-----+----------+------------+
+| stdID | Stdname        | sex    | percentage | class | sec | stream   | DOB        |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+|  1001 | Surekha Joshi  | Female |      82.00 |    12 | A   | Science  | 1998-08-03 |
+|  1002 | MAAHI AGARWAL  | Female |      56.00 |    11 | C   | Commerce | 2008-11-23 |
+|  1003 | Sanam Verma    | male   |      59.00 |    11 | C   | Commerce | 2006-06-29 |
+|  1004 | Ronit Kumar    | male   |      63.00 |    11 | C   | Commerce | 1997-11-05 |
+|  1005 | Dipesh Pulkit  | male   |      78.00 |    11 | B   | Science  | 2003-09-14 |
+|  1006 | JAHANVI Puri   | Female |      60.00 |    11 | B   | Commerce | 2008-11-07 |
+|  1007 | Sanam Kumar    | male   |      23.00 |    12 | F   | Commerce | 1998-08-03 |
+|  1008 | SAHIL SARAS    | male   |      56.00 |    11 | C   | Commerce | 2008-11-07 |
+|  1009 | AKSHRA AGARWAL | Female |      72.00 |    12 | B   | Commerce | 1996-10-01 |
+|  1010 | STUTI MISHRA   | Female |      39.00 |    11 | F   | Science  | 2008-11-23 |
+|  1011 | HARSH AGARWAL  | male   |      42.00 |    11 | C   | Science  | 1998-08-03 |
+|  1012 | NIKUNJ AGARWAL | male   |      49.00 |    12 | C   | Commerce | 1998-06-28 |
+|  1013 | AKRITI SAXENA  | Female |      89.00 |    12 | A   | Science  | 2008-11-23 |
+|  1014 | TANI RASTOGI   | Female |      82.00 |    12 | A   | Science  | 2008-11-23 |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+14 rows in set (0.00 sec)
+
+2).To display any name and date of birth from the table STUDENT. SELECT StdName, DOB
+FROM student ; 
+
+ANS:-
+mysql> select * from student;
++-------+----------------+--------+------------+-------+-----+----------+------------+
+| stdID | Stdname        | sex    | percentage | class | sec | stream   | DOB        |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+|  1001 | Surekha Joshi  | Female |      82.00 |    12 | A   | Science  | 1998-08-03 |
+|  1002 | MAAHI AGARWAL  | Female |      56.00 |    11 | C   | Commerce | 2008-11-23 |
+|  1003 | Sanam Verma    | male   |      59.00 |    11 | C   | Commerce | 2006-06-29 |
+|  1004 | Ronit Kumar    | male   |      63.00 |    11 | C   | Commerce | 1997-11-05 |
+|  1005 | Dipesh Pulkit  | male   |      78.00 |    11 | B   | Science  | 2003-09-14 |
+|  1006 | JAHANVI Puri   | Female |      60.00 |    11 | B   | Commerce | 2008-11-07 |
+|  1007 | Sanam Kumar    | male   |      23.00 |    12 | F   | Commerce | 1998-08-03 |
+|  1008 | SAHIL SARAS    | male   |      56.00 |    11 | C   | Commerce | 2008-11-07 |
+|  1009 | AKSHRA AGARWAL | Female |      72.00 |    12 | B   | Commerce | 1996-10-01 |
+|  1010 | STUTI MISHRA   | Female |      39.00 |    11 | F   | Science  | 2008-11-23 |
+|  1011 | HARSH AGARWAL  | male   |      42.00 |    11 | C   | Science  | 1998-08-03 |
+|  1012 | NIKUNJ AGARWAL | male   |      49.00 |    12 | C   | Commerce | 1998-06-28 |
+|  1013 | AKRITI SAXENA  | Female |      89.00 |    12 | A   | Science  | 2008-11-23 |
+|  1014 | TANI RASTOGI   | Female |      82.00 |    12 | A   | Science  | 2008-11-23 |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+14 rows in set (0.00 sec)
+
+mysql> SELECT StdName, DOB
+    -> FROM student;
++----------------+------------+
+| StdName        | DOB        |
++----------------+------------+
+| Surekha Joshi  | 1998-08-03 |
+| MAAHI AGARWAL  | 2008-11-23 |
+| Sanam Verma    | 2006-06-29 |
+| Ronit Kumar    | 1997-11-05 |
+| Dipesh Pulkit  | 2003-09-14 |
+| JAHANVI Puri   | 2008-11-07 |
+| Sanam Kumar    | 1998-08-03 |
+| SAHIL SARAS    | 2008-11-07 |
+| AKSHRA AGARWAL | 1996-10-01 |
+| STUTI MISHRA   | 2008-11-23 |
+| HARSH AGARWAL  | 1998-08-03 |
+| NIKUNJ AGARWAL | 1998-06-28 |
+| AKRITI SAXENA  | 2008-11-23 |
+| TANI RASTOGI   | 2008-11-23 |
++----------------+------------+
+14 rows in set (0.00 sec)
+
+3)To display all students record where percentage is greater of equal to 80 FROM student table.
+SELECT * FROM student WHERE percentage >= 80; 
+ANS:-
+    mysql> select * from student;
++-------+----------------+--------+------------+-------+-----+----------+------------+
+| stdID | Stdname        | sex    | percentage | class | sec | stream   | DOB        |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+|  1001 | Surekha Joshi  | Female |      82.00 |    12 | A   | Science  | 1998-08-03 |
+|  1002 | MAAHI AGARWAL  | Female |      56.00 |    11 | C   | Commerce | 2008-11-23 |
+|  1003 | Sanam Verma    | male   |      59.00 |    11 | C   | Commerce | 2006-06-29 |
+|  1004 | Ronit Kumar    | male   |      63.00 |    11 | C   | Commerce | 1997-11-05 |
+|  1005 | Dipesh Pulkit  | male   |      78.00 |    11 | B   | Science  | 2003-09-14 |
+|  1006 | JAHANVI Puri   | Female |      60.00 |    11 | B   | Commerce | 2008-11-07 |
+|  1007 | Sanam Kumar    | male   |      23.00 |    12 | F   | Commerce | 1998-08-03 |
+|  1008 | SAHIL SARAS    | male   |      56.00 |    11 | C   | Commerce | 2008-11-07 |
+|  1009 | AKSHRA AGARWAL | Female |      72.00 |    12 | B   | Commerce | 1996-10-01 |
+|  1010 | STUTI MISHRA   | Female |      39.00 |    11 | F   | Science  | 2008-11-23 |
+|  1011 | HARSH AGARWAL  | male   |      42.00 |    11 | C   | Science  | 1998-08-03 |
+|  1012 | NIKUNJ AGARWAL | male   |      49.00 |    12 | C   | Commerce | 1998-06-28 |
+|  1013 | AKRITI SAXENA  | Female |      89.00 |    12 | A   | Science  | 2008-11-23 |
+|  1014 | TANI RASTOGI   | Female |      82.00 |    12 | A   | Science  | 2008-11-23 |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+14 rows in set (0.00 sec)
+
+      
+mysql> SELECT *
+    -> FROM student
+    -> WHERE percentage >= 80;
++-------+---------------+--------+------------+-------+-----+---------+------------+
+| stdID | Stdname       | sex    | percentage | class | sec | stream  | DOB        |
++-------+---------------+--------+------------+-------+-----+---------+------------+
+|  1001 | Surekha Joshi | Female |      82.00 |    12 | A   | Science | 1998-08-03 |
+|  1013 | AKRITI SAXENA | Female |      89.00 |    12 | A   | Science | 2008-11-23 |
+|  1014 | TANI RASTOGI  | Female |      82.00 |    12 | A   | Science | 2008-11-23 |
++-------+---------------+--------+------------+-------+-----+---------+------------+
+3 rows in set (0.02 sec)
+
+4)To display student name, stream and percentage where percentage of student is more than 80
+SELECT StdName, Stream, Percentage WHERE percentage > 80;
+ANS:-
+
+ mysql> select * from student;
++-------+----------------+--------+------------+-------+-----+----------+------------+
+| stdID | Stdname        | sex    | percentage | class | sec | stream   | DOB        |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+|  1001 | Surekha Joshi  | Female |      82.00 |    12 | A   | Science  | 1998-08-03 |
+|  1002 | MAAHI AGARWAL  | Female |      56.00 |    11 | C   | Commerce | 2008-11-23 |
+|  1003 | Sanam Verma    | male   |      59.00 |    11 | C   | Commerce | 2006-06-29 |
+|  1004 | Ronit Kumar    | male   |      63.00 |    11 | C   | Commerce | 1997-11-05 |
+|  1005 | Dipesh Pulkit  | male   |      78.00 |    11 | B   | Science  | 2003-09-14 |
+|  1006 | JAHANVI Puri   | Female |      60.00 |    11 | B   | Commerce | 2008-11-07 |
+|  1007 | Sanam Kumar    | male   |      23.00 |    12 | F   | Commerce | 1998-08-03 |
+|  1008 | SAHIL SARAS    | male   |      56.00 |    11 | C   | Commerce | 2008-11-07 |
+|  1009 | AKSHRA AGARWAL | Female |      72.00 |    12 | B   | Commerce | 1996-10-01 |
+|  1010 | STUTI MISHRA   | Female |      39.00 |    11 | F   | Science  | 2008-11-23 |
+|  1011 | HARSH AGARWAL  | male   |      42.00 |    11 | C   | Science  | 1998-08-03 |
+|  1012 | NIKUNJ AGARWAL | male   |      49.00 |    12 | C   | Commerce | 1998-06-28 |
+|  1013 | AKRITI SAXENA  | Female |      89.00 |    12 | A   | Science  | 2008-11-23 |
+|  1014 | TANI RASTOGI   | Female |      82.00 |    12 | A   | Science  | 2008-11-23 |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+14 rows in set (0.00 sec)
+
+
+mysql> SELECT StdName,Stream,Percentage
+    -> FROM Student
+    -> WHERE Percentage>80;
++---------------+---------+------------+
+| StdName       | Stream  | Percentage |
++---------------+---------+------------+
+| Surekha Joshi | Science |      82.00 |
+| AKRITI SAXENA | Science |      89.00 |
+| TANI RASTOGI  | Science |      82.00 |
++---------------+---------+------------+
+3 rows in set (0.04 sec)
+
+
+5).To display all records of science students whose percentage is more than 75 form student table.
+SELECT * FORM student WHERE stream = ‘Science’ AND percentage > 75;
+ANS:-
+
+ mysql> select * from student;
++-------+----------------+--------+------------+-------+-----+----------+------------+
+| stdID | Stdname        | sex    | percentage | class | sec | stream   | DOB        |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+|  1001 | Surekha Joshi  | Female |      82.00 |    12 | A   | Science  | 1998-08-03 |
+|  1002 | MAAHI AGARWAL  | Female |      56.00 |    11 | C   | Commerce | 2008-11-23 |
+|  1003 | Sanam Verma    | male   |      59.00 |    11 | C   | Commerce | 2006-06-29 |
+|  1004 | Ronit Kumar    | male   |      63.00 |    11 | C   | Commerce | 1997-11-05 |
+|  1005 | Dipesh Pulkit  | male   |      78.00 |    11 | B   | Science  | 2003-09-14 |
+|  1006 | JAHANVI Puri   | Female |      60.00 |    11 | B   | Commerce | 2008-11-07 |
+|  1007 | Sanam Kumar    | male   |      23.00 |    12 | F   | Commerce | 1998-08-03 |
+|  1008 | SAHIL SARAS    | male   |      56.00 |    11 | C   | Commerce | 2008-11-07 |
+|  1009 | AKSHRA AGARWAL | Female |      72.00 |    12 | B   | Commerce | 1996-10-01 |
+|  1010 | STUTI MISHRA   | Female |      39.00 |    11 | F   | Science  | 2008-11-23 |
+|  1011 | HARSH AGARWAL  | male   |      42.00 |    11 | C   | Science  | 1998-08-03 |
+|  1012 | NIKUNJ AGARWAL | male   |      49.00 |    12 | C   | Commerce | 1998-06-28 |
+|  1013 | AKRITI SAXENA  | Female |      89.00 |    12 | A   | Science  | 2008-11-23 |
+|  1014 | TANI RASTOGI   | Female |      82.00 |    12 | A   | Science  | 2008-11-23 |
++-------+----------------+--------+------------+-------+-----+----------+------------+
+14 rows in set (0.00 sec)
+
+      
+mysql> SELECT * FROM student WHERE stream = 'Science' AND percentage > 75;
++-------+---------------+--------+------------+-------+-----+---------+------------+
+| stdID | Stdname       | sex    | percentage | class | sec | stream  | DOB        |
++-------+---------------+--------+------------+-------+-----+---------+------------+
+|  1001 | Surekha Joshi | Female |      82.00 |    12 | A   | Science | 1998-08-03 |
+|  1005 | Dipesh Pulkit | male   |      78.00 |    11 | B   | Science | 2003-09-14 |
+|  1013 | AKRITI SAXENA | Female |      89.00 |    12 | A   | Science | 2008-11-23 |
+|  1014 | TANI RASTOGI  | Female |      82.00 |    12 | A   | Science | 2008-11-23 |
++-------+---------------+--------+------------+-------+-----+---------+------------+
+4 rows in set (0.00 sec)
+
+        
